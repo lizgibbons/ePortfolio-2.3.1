@@ -1,8 +1,7 @@
 <apex:component controller="ListViewController">
 <body>
 <!-- START LIST VIEW -->
-  <div class="view" id="list">
-	<h2>This is a test</h2>
+<div class="view" id="list">
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="row">
@@ -30,7 +29,7 @@
 							</tr>
 							<apex:repeat value="{!assetCatMap[cat]}" var="a">
 								<tr class="category-in">
-									<td>size: {!assetCatMap[cat].size();}</td>
+									<td></td>
 									<td class="asset-name"><span>{!assetCatMap[cat][a].Name}</span></td>
 									<td><span>{!assetCatMap[cat][a].LastModifiedDate}</span></td>
 								</tr>
