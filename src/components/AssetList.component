@@ -22,6 +22,7 @@
 					</thead>
 					<tbody>
 						<apex:repeat value="{!assetCatMap}" var="cat">
+						<h2>Map Size: {!assetCatMap.size();}</h2>
 							<tr class="category-row" id="{!cat}" onclick="togglerows(this);">
 								<td class="hidden"><label></label></td>
 								<td colspan="3"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;<span class="name">{!cat}</span></td>
