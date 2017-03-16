@@ -2,6 +2,7 @@
 <body>
 <!-- START LIST VIEW -->
   <div class="view" id="list">
+	<h2>This is a test</h2>
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="row">
@@ -12,7 +13,6 @@
 				</div>
 			</div>
 			<apex:form id="tableAssets">
-				<h2>testing</h2>
 				<table id="basic-datatable" class="table table-bordered">
 					<thead>
 						<tr>
