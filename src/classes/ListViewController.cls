@@ -9,6 +9,7 @@ public with sharing class ListViewController {
 	public List<Asset__c> assetList {get; set;}
 	//tracks the current Category__c to know when it changes
 	public String currentCat {get; set;}
+
 	
 	
 	public ListViewController(){
@@ -21,9 +22,9 @@ public with sharing class ListViewController {
 			catList.add(f.getLabel());
 		}
 		
-		assetList = [select Name, Category__c, LastModifiedDate from Asset__c where OwnerId = '00561000000V9OE'  order by Category__c]; //get records
+		assetList = [select ID, Name, Category__c, LastModifiedDate from Asset__c where User__c = :UserInfo.getUserId() order by Category__c]; //get records
 		assetCatMap = new Map<String, Map<Id,Asset__c>>();
-		assetMap = new Map<Id, Asset__c>();
+		assetMap = new Map<Id, Asset__c>();	
 	
 		currentCat = null;
 		
@@ -39,9 +40,14 @@ public with sharing class ListViewController {
 			
 			//if category__c has changed or if it's the last record, save the assetMap for the category__c
 			if(currentCat != assetList[i].Category__c || assetList.size() == i+1){
+				//if only one record add asset to the map first
+				if(i == 0){assetMap.put(assetList[i].Id, assetList[i]);}
+				//add current category and asset map to the category map
 				assetCatMap.put(currentCat, assetMap.clone());
 				assetMap.clear();
+				//declare new category
 				currentCat = assetList[i].Category__c;
+
 			}			
 			
 			assetMap.put(assetList[i].Id, assetList[i]);

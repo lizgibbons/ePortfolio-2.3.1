@@ -1,7 +1,7 @@
 <apex:component controller="ListViewController">
 <body>
 <!-- START LIST VIEW -->
-<div class="view" id="list">
+  <div class="view" id="list">
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="row">
@@ -22,7 +22,6 @@
 					</thead>
 					<tbody>
 						<apex:repeat value="{!assetCatMap}" var="cat">
-						<h2>My Map Size: {!assetCatMap.size();}</h2>
 							<tr class="category-row" id="{!cat}" onclick="togglerows(this);">
 								<td class="hidden"><label></label></td>
 								<td colspan="3"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;<span class="name">{!cat}</span></td>
@@ -31,7 +30,7 @@
 							<apex:repeat value="{!assetCatMap[cat]}" var="a">
 								<tr class="category-in">
 									<td></td>
-									<td class="asset-name"><span>{!assetCatMap[cat][a].Name}</span></td>
+									<td class="asset-name"><span><a href="LPAssetDetail?id={!assetCatMap[cat][a].id}">{!assetCatMap[cat][a].Name}</a></span></td>
 									<td><span>{!assetCatMap[cat][a].LastModifiedDate}</span></td>
 								</tr>
 							</apex:repeat>
