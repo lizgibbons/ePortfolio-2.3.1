@@ -44,15 +44,15 @@
 				</div>
 			</apex:outputPanel>
 			<ol class="breadcrumb">
-				<!--<apex:outputPanel layout="none" rendered="{!!ISBLANK(CategoryParam)}">
+				<apex:outputPanel layout="none" rendered="{!!ISBLANK(CategoryParam)}">
 					<li><a href="{!$Page.LPAssets}?b=yes{!LearnerProfileLink}">{!$Label.LBL_Categories}</a></li>
 					<li class="active">{!CategoryParam.label}</li>
 				</apex:outputPanel>
 				<apex:outputPanel layout="none" rendered="{!ISBLANK(CategoryParam)}">
-					<li>{!$Label.LBL_Categories}</li>
-				</apex:outputPanel>-->
-				<li><a href="#" id="fview">Folder View</a> |
-				<a href="#" id="lview">List View</a></li>
+					<!-- li>{!$Label.LBL_Categories}</li-->
+					<li><a href="#" id="fview">Folder View</a> |
+					<a href="#" id="lview">List View</a></li>
+				</apex:outputPanel>
 				
 			</ol>
 			<!-- apex:outputPanel layout="none" rendered="{!!inactiveProfile}"-->
@@ -101,45 +101,8 @@
 					 </div>
 					<!-- END FOLDER VIEW -->
 					<!-- START LIST VIEW -->
-					<div class="view" id="list">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-lg-2">
-									<div class="form-group">
-										<input type="text" class="form-control input-sm form-control-flat" placeholder="{!$Label.LBL_Search_Asset}" onkeyup="checksearch(this);"/>
-									</div>
-									</div>
-								</div>
-								<apex:form id="tableAssets">
-									<table id="basic-datatable" class="table table-bordered">
-										<thead>
-											<tr>
-												<th id="first-th" class="click-header" onclick="toogleall(this);"><i class="fa fa-plus-square-o" title="{!$Label.LBL_Show_Hide_All}"></i></th>
-												<th width="60%">{!$ObjectType.Asset__c.Fields.Name.Label}</th>
-												<th>{!$ObjectType.Asset__c.Fields.LastModifiedDate.Label}</th>
-											</tr>
-										</thead>
-											<tbody>
-												<apex:repeat value="{!assetCatMap}" var="cat">
-													<tr class="category-row" id="{!cat}" onclick="togglerows(this);">
-														<td class="hidden"><label></label></td>
-														<td colspan="3"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;<span class="name">{!cat}</span></td>
-														<td class="hidden"><span></span></td>
-													</tr>
-													<apex:repeat value="{!assetCatMap[cat]}" var="a">
-														<tr class="category-in" >
-															<td></td>
-															<td class="asset-name"><span>{!assetCatMap[cat][a].Name}</span></td>
-															<td><span>{!assetCatMap[cat][a].LastModifiedDate}</span></td>
-														</tr>
-													</apex:repeat>
-												</apex:repeat>
-											</tbody>
-									</table>
-								</apex:form>
-							</div>
-						</div>
+					<div class="views">
+						<c:AssetList />
 					</div>
 					<!-- END LIST VIEW -->
 				</div>
